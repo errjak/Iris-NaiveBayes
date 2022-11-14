@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>Iris Classification</title>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    
+<<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+      <h3>Klasifikasi Data Iris Dengan Menggunakan Metode Naive Bayes</h3>
+      <p class="blue-text">Dio Adya Wicaksono - 200411100066<br>Penambangan Data B</p>
+      <div class="card">
+        <h5 class="text-center mb-4">Masukkan Inputan Data</h5>
+        <form class="form-card" action="/" method="post" onsubmit="">
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3" for="sepal_length">Sepal_Length<span class="text-danger">*</span></label>
+              <input type="text" name="sepal_length" id="sepal_length" placeholder="" onblur="validate(1)" required>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3" for="sepal_width">Sepal_Width<span class="text-danger">*</span></label> 
+              <input type="text" name="sepal_width" id="sepal_width" placeholder="" onblur="validate(2)" required>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3" for="petal_length">Petal_Length<span class="text-danger">*</span></label>
+              <input type="text" name="petal_length" id="petal_length" placeholder="" onblur="validate(3)" required>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="form-control-label px-3" for="petal_width">Petal_Width<span class="text-danger">*</span></label>
+              <input type="text" name="petal_width" id="petal_width" placeholder="" onblur="validate(4)" required>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-12 flex-column d-flex"> Hasil Prediksi adalah {{ prediction_text }} </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Prediksi</button> </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+  
+</html>
