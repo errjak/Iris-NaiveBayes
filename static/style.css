@@ -2,7 +2,7 @@ body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background-image: url("https://i.imgur.com/GMmCQHC.png");
+    background-image: url("https: //images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600");
     background-repeat: no-repeat;
     background-size: 100% 100%
 }
@@ -16,7 +16,7 @@ body {
 }
 
 .blue-text {
-    color: #00BCD4
+    color: #000 !important
 }
 
 .form-control-label {
