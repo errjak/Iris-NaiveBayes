@@ -1,14 +1,13 @@
 body {
-    color: #000;
+  
     overflow-x: hidden;
-    height: 100%;
-    background-image: url("https: //images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600");
     background-repeat: no-repeat;
-    background-size: 100% 100%
+    background-image: url(../static/images/tajmahal.jpg);
+    background-size: auto
 }
 
 .card {
-    padding: 30px 40px;
+    padding: 30px 30px;
     margin-top: 60px;
     margin-bottom: 60px;
     border: none !important;
@@ -42,7 +41,7 @@ textarea:focus {
     box-shadow: none !important;
     border: 1px solid #00BCD4;
     outline-width: 0;
-    font-weight: 400
+    font-weight: 400;
 }
 
 .btn-block {
@@ -63,3 +62,4 @@ button:focus {
     box-shadow: none !important;
     outline-width: 0
 }
+

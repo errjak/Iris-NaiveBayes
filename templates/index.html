@@ -2,62 +2,158 @@
 <html>
   <!--From https://codepen.io/frytyler/pen/EGdtg-->
   <head>
-    <meta charset="UTF-8" />
-    <title>Iris Classification</title>
-    <link
-      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    
+    <style>
+      /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {
+    height: 800px
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    background-color: #f1f1f1;
+    height: 215%;
+}
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 100px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Air Quality Delhi Classification</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
   </head>
 
-  <body>
-    
-<<div class="container-fluid px-1 py-5 mx-auto">
-  <div class="row d-flex justify-content-center">
-    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-      <h3>Klasifikasi Data Iris Dengan Menggunakan Metode Naive Bayes</h3>
-      <p class="blue-text">Dio Adya Wicaksono - 200411100066<br>Penambangan Data B</p>
-      <div class="card">
-        <h5 class="text-center mb-4">Masukkan Inputan Data</h5>
-        <form class="form-card" action="/" method="post" onsubmit="">
-          <div class="row justify-content-between text-left">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="form-control-label px-3" for="sepal_length">Sepal_Length<span class="text-danger">*</span></label>
-              <input type="text" name="sepal_length" id="sepal_length" placeholder="" onblur="validate(1)" required>
-            </div>
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="form-control-label px-3" for="sepal_width">Sepal_Width<span class="text-danger">*</span></label> 
-              <input type="text" name="sepal_width" id="sepal_width" placeholder="" onblur="validate(2)" required>
+<body>
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h2>Penambangan Data B</h2>
+        <h4>Dio Adya Wicaksono - 200411100066</h4>
+        <br>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#section-1">Home</a></li>
+          <li><a href="#section-2">Penjelasan</a></li>
+          <li><a href="#section-3">Inputan Data</a></li>
+        </ul><br>
+      </div>
+    <div class="col-sm-9">
+      <hr>
+      <h2 id="section-1" style="text-align:center ;">Klasifikasi Kualitas Udara Kota Delhi Dengan Menggunakan Metode Naive Bayes</h2><br>
+      <p style="text-align:justify; text-indent: 30px;">Saat ini yang akan kami bahas adalah topik mengenai udara bersih yang merupakan salah satu faktor masalah yang sedang
+      dihadapi oleh negara tetangga yang berbatsan daratan langsung negara Pakistan yaitu negara India. Udara bersih sudah
+      menjadi masalah yang benar – benar harus diselesaikan oleh negara India. Sebagai perbandingan, berdasarkan data Air
+      Quality Life Index yang disajikan Energy Policy Institute, Universitas Chicago, tahun 2020, Indonesia adalah negara
+      paling tercemar kesembilan di dunia. Menurut laporan itu, polusi udara dapat memperpendek harapan hidup rata-rata orang
+      Indonesia sebanyak dua tahun, dan di wilayah paling tercemar sebanyak tujuh tahun.Di Jakarta, tingkat polusi disebut
+      enam kali lipat dari pedoman WHO, dan jika hal itu terus terjadi, angka harapan hidup warga Jakarta bisa berkurang
+      sebanyak 4,8 tahun. Itu terjadi di negara kita Indonesia dimana Jakarta sudah mendapat spotlight dari dunia
+      internasional mengenai air quality yang harus benar benar dapat diselesaikan.</p>
+      <br>
+      <p style="text-align:justify; text-indent: 30px;">Dalam beberapa dekade terakhir, polusi udara telah menyebar ke India bagian barat dan tengah, termasuk Maharashtra dan
+      Madhya Pradesh. Menurut laporan itu, harapan hidup di wilayah itu dua setengah hingga tiga tahun lebih rendah dari
+      tingkat polusi udara di awal 2000-an. Data EPIC terbaru termasuk dalam laporan Indeks Kehidupan Kualitas Udara yang
+      menunjukkan harapan hidup. Jika polusi udara mencapai standar Organisasi Kesehatan Dunia (WHO) 10 g/m³, populasi ibu
+      kota Delhi bisa meningkat satu dekade. Pada tahun 2019, India memiliki konsentrasi partikulat tertinggi di dunia,
+      rata-rata 70,3 g/m³. Menurut laporan tersebut, EPIC memahami bahwa Pemerintah India telah memberlakukan sejumlah
+      perubahan kebijakan untuk mengatasi polusi udara termasuk: B. Program Udara Bersih Nasional (NCAP) 2019 untuk mengurangi
+      polusi partikulat berbahaya di dalam negeri. Dalam laporan terbarunya tentang polusi udara di India, EPIC memuji Program
+      Udara Bersih Nasional India (NCAP), yang diluncurkan pada 2019 untuk mengendalikan tingkat polusi. Laporan EPIC
+      mengatakan bahwa "memenuhi dan mempertahankan" target NCAP akan menambah 1,7 tahun harapan hidup negara secara
+      keseluruhan, dan 3,1 tahun ke New Delhi. Seperti dilansir Reuters, NCAP akan memastikan pengurangan emisi gas buang
+      industri dan kendaraan, memperkenalkan peraturan ketat tentang pembakaran bahan bakar dan biomassa, dan mengurangi
+      paparan debu untuk mengurangi emisi pada tahun 2024. Ini bertujuan untuk mengurangi polusi di 102 kota yang paling parah
+      terkena dampaknya. sebesar 20-30%. New Delhi adalah ibu kota paling tercemar di dunia untuk tahun ketiga berturut-turut
+      pada tahun 2020, menurut kelompok Swiss IQAir, yang mengukur kualitas udara dengan konsentrasi partikel udara yang
+      merusak paru-paru yang disebut PM2.5. Tahun lalu, 20 juta penduduk New Delhi menghirup udara terbersih dalam catatan
+      karena penguncian pandemi COVID-19. Hasil EPIC menunjukkan bahwa peningkatan kualitas udara ke tingkat yang
+      direkomendasikan oleh Organisasi Kesehatan Dunia (WHO) dapat menambah rata-rata 5,4 tahun kehidupan di negara tetangga
+      Bangladesh. Untuk mengukur harapan hidup, EPIC membandingkan kesehatan orang-orang yang terpapar berbagai tingkat polusi
+      udara dari waktu ke waktu dan menerapkan hasilnya ke berbagai bagian India dan sekitarnya.</p>
+      <br>
+      <p id="section-2" style="text-align:justify; text-indent: 30px;">Udara bersih yang menjadi fokus bagi negara India untuk melakukan pemecahan masalah harus benar benar dapat ditangani,
+      dalam paper ini kami akan berusaha untuk melakukan proses klasifikasi berdasarkan dataset public yang kami dapat, proses
+      klasifikasinya adalah dengan menggunakan metode naïve bayes, nantinya kami berharap dengan proses klasifikasi kami dapat
+      mengetahui setiap di Delhi, India memiliki udara paling bersih hingga yang paling tidak layak. Nantinya kami akan
+      mengetahui dan mendapat hasil dengan metode naïve bayes yang akan mendapat hasil yang kami inginkan.</p>
+      <br>
+      <p>Nb* (catatan):</p>
+      <br>
+      <p>PM2.5  : Partikulat yang berukuran 2,5 mikrometer atau lebih kecil</p>
+      <p>PM10   : Partikulat yang berukuran 10 mikrometer atau lebih kecil</p>
+      <p>NO     : Nitrogen monoksida</p>
+      <p>NO2    : Nitrogen dioksida</p>
+      <p>NOx    : Nitrogen oksida</p>
+      <p>NH3    : Amonia</p>
+      <p>AQI    : Indeks Kualitas Udara</p>
+
+      <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+          <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card">
+              <h5></h5>
+              <h3 id="section-3" class="text-center mb-4">Masukkan Inputan Data</h3>
+              <form class="form-card" action="/" method="post" onsubmit="">
+                <div class="row justify-content-between text-left">
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="PM2.5">PM2.5<span class="text-danger">*</span></label>
+                    <input type="text" name="PM2.5" id="PM2.5" placeholder="" onblur="validate(1)" required>
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="PM10">PM10<span class="text-danger">*</span></label> 
+                    <input type="text" name="PM10" id="PM10" placeholder="" onblur="validate(2)" required>
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="NO">NO<span class="text-danger">*</span></label>
+                    <input type="text" name="NO" id="NO" placeholder="" onblur="validate(3)" required>
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="NO2">NO2<span class="text-danger">*</span></label>
+                    <input type="text" name="NO2" id="NO2" placeholder="" onblur="validate(4)" required>
+                  </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="NOx">NOx<span class="text-danger">*</span></label>
+                    <input type="text" name="NOx" id="NOx" placeholder="" onblur="validate(5)" required>
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="NH3">NH3<span class="text-danger">*</span></label>
+                    <input type="text" name="NH3" id="NH3" placeholder="" onblur="validate(6)" required>
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-control-label px-3" for="AQI">AQI<span class="text-danger">*</span></label>
+                    <input type="text" name="AQI" id="AQI" placeholder="" onblur="validate(7)" required>
+                  </div>
+                </div>
+                <div class="row justify-content-between text-center">
+                  <div class="form-group col-12 flex-column d-flex"> Hasil prediksi kualitas udara adalah {{ prediction_text }} </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-dark">Prediksi</button> </div>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="row justify-content-between text-left">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="form-control-label px-3" for="petal_length">Petal_Length<span class="text-danger">*</span></label>
-              <input type="text" name="petal_length" id="petal_length" placeholder="" onblur="validate(3)" required>
-            </div>
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="form-control-label px-3" for="petal_width">Petal_Width<span class="text-danger">*</span></label>
-              <input type="text" name="petal_width" id="petal_width" placeholder="" onblur="validate(4)" required>
-            </div>
-          </div>
-          <div class="row justify-content-between text-left">
-            <div class="form-group col-12 flex-column d-flex"> Hasil Prediksi adalah {{ prediction_text }} </div>
-          </div>
-          <div class="row justify-content-end">
-            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Prediksi</button> </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
   
